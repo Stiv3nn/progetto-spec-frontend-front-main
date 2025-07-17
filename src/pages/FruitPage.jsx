@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react';
 import { getFruits } from '../api';
 import { fruitExtras } from '../data/fruitExtras';
 import FruitCard from '../components/FruitCard';
+import { Link } from 'react-router-dom';
 import './FruitPage.css';
 
-// LOGICA DELLA CHIAMATA CON FETCH + I FRUTTI EXTRA
 function FruitPage() {
   const [fruits, setFruits] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [compareList, setCompareList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterCategory, setFilterCategory] = useState('');
+  const [sortOrder, setSortOrder] = useState('asc');
 
   // QUESTO BLOCCO DI CODICE SERVE PER CARICARE I DATI INZIALI APPENA LA PAGINA VIENE CARICATA, UNENDO I DATI DEL BACKEND CON QUELLI EXTRA
   useEffect(() => {
@@ -40,36 +43,123 @@ function FruitPage() {
       });
   }, []); // VIENE ESEGUITA UNA VOLTA GRAZIE ALLA DIPENDENZA
 
+  // Salva i preferiti nel localStorage quando cambiano
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  // Gestione preferiti
+  const handleToggleFavorite = (fruit) => {
+    if (favorites.find(f => f.id === fruit.id)) {
+      setFavorites(prev => prev.filter(f => f.id !== fruit.id));
+    } else {
+      setFavorites(prev => [...prev, fruit]);
+    }
+  };
+
+  // Gestione confronto
   const handleCompare = (fruit) => {
     if (compareList.find(f => f.id === fruit.id)) return;
     if (compareList.length >= 2) return;
     setCompareList(prev => [...prev, fruit]);
   };
 
-  const handleToggleFavorite = (fruit) => {
-    if (favorites.find(f => f.id === fruit.id)) {
-      const updated = favorites.filter(f => f.id !== fruit.id);
-      setFavorites(updated);
-    } else {
-      setFavorites([...favorites, fruit]);
-    }
+  const handleResetCompare = () => {
+    setCompareList([]);
   };
 
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
+  // Applica ricerca, filtri e ordinamento
+  const filteredFruits = fruits
+    .filter(f => f.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter(f => !filterCategory || f.category === filterCategory)
+    .sort((a, b) => sortOrder === 'asc'
+      ? a.title.localeCompare(b.title)
+      : b.title.localeCompare(a.title)
+    );
 
   return (
     <div className="fruit-page">
       <h1>Frutti disponibili 🍎</h1>
+
+      {/* 🔍 Filtri */}
+      <div className="filters">
+        <input
+          type="text"
+          placeholder="Cerca un frutto..."
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+          className="filter-input"
+        />
+        <select
+          value={filterCategory}
+          onChange={e => setFilterCategory(e.target.value)}
+          className="filter-select"
+        >
+          <option value="">Tutte le categorie</option>
+          <option value="Tropicale">Tropicale</option>
+          <option value="Agrumi">Agrumi</option>
+          <option value="Frutta a polpa">Frutta a polpa</option>
+          <option value="Frutta a bacca">Frutta a bacca</option>
+        </select>
+        <select
+          value={sortOrder}
+          onChange={e => setSortOrder(e.target.value)}
+          className="filter-select"
+        >
+          <option value="asc">Ordina A-Z</option>
+          <option value="desc">Ordina Z-A</option>
+        </select>
+      </div>
+
+      {/* 💜 Pulsante per preferiti */}
+      {favorites.length > 0 && (
+        <Link to="/favorites">
+          <button className="favorites-button">
+            Vai alla pagina dei preferiti 💜
+          </button>
+        </Link>
+      )}
+
+      {/* ⚖️ Confronto */}
+      {compareList.length > 0 && (
+        <div className="compare-container">
+          <h2>Confronto</h2>
+          <div className="compare-list">
+            {compareList.map(fruit => (
+              <div key={fruit.id} className="compare-card">
+                <img src={fruit.image} alt={fruit.title} className="compare-image" />
+                <h3>{fruit.title}</h3>
+                <p><strong>Categoria:</strong> {fruit.category}</p>
+                <p><strong>Colore:</strong> {fruit.color}</p>
+                <p><strong>Calorie:</strong> {fruit.calories}</p>
+                <p><strong>Origine:</strong> {fruit.origin}</p>
+              </div>
+            ))}
+          </div>
+          <button className="reset-button" onClick={handleResetCompare}>
+            Rimuovi confronto
+          </button>
+
+          {compareList.length === 2 && (
+            <>
+              {localStorage.setItem('compareList', JSON.stringify(compareList))}
+              <Link to="/compare">
+                <button className="compare-go-button">Vai al confronto →</button>
+              </Link>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* 🧺 Lista frutti */}
       <div className="fruit-list">
-        {fruits.map(fruit => (
+        {filteredFruits.map(fruit => (
           <FruitCard
             key={fruit.id}
             fruit={fruit}
             onCompare={handleCompare}
             onToggleFavorite={handleToggleFavorite}
-            isFavorite={favorites.some(f => f.id === fruit.id)}
+            isFavorite={favorites.find(f => f.id === fruit.id)}
           />
         ))}
       </div>

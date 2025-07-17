@@ -1,32 +1,36 @@
-.detail-container {
+.fruit-detail-container {
     max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
+    margin: 40px auto;
+    text-align: center;
+    padding: 20px;
     border: 1px solid #ddd;
     border-radius: 16px;
-    background-color: #fff;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background-color: #fffefb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.detail-image {
-    width: 100%;
-    max-height: 250px;
-    object-fit: cover;
+.fruit-detail-image {
+    max-width: 100%;
     border-radius: 12px;
 }
 
-.detail-description {
-    margin-top: 1rem;
+.fruit-description {
     font-style: italic;
+    margin-top: 15px;
     color: #444;
 }
 
 .back-button {
-    margin-top: 1rem;
-    padding: 10px 16px;
+    margin-top: 25px;
+    padding: 10px 18px;
+    background-color: #f08080;
+    color: white;
     border: none;
-    background-color: #e4e4e4;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
+    font-weight: bold;
+}
+
+.back-button:hover {
+    background-color: #e26e6e;
 }

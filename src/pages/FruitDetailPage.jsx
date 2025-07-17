@@ -1,26 +1,40 @@
-import { useParams, Link } from 'react-router-dom';
-import './FruitDetailPage.css';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getFruits } from '../api';
+import './FruitDetail.css';
 
-function FruitDetailPage({ fruits }) {
+function FruitDetail() {
     const { id } = useParams();
-    const fruit = fruits.find(f => f.id === parseInt(id));
+    const navigate = useNavigate();
+    const [fruit, setFruit] = useState(null);
 
-    if (!fruit) return <p>Frutto non trovato.</p>;
+    useEffect(() => {
+        getFruits()
+            .then(data => {
+                const selected = data.find(f => f.id === parseInt(id));
+                setFruit(selected);
+            })
+            .catch(console.error);
+    }, [id]);
+
+    if (!fruit) return <p>Caricamento in corso...</p>;
 
     return (
-        <div className="detail-container">
-            <img src={fruit.image} alt={fruit.title} className="detail-image" />
+        <div className="fruit-detail-container">
+            <img src={fruit.image} alt={fruit.title} className="fruit-detail-image" />
             <h2>{fruit.title}</h2>
             <p><strong>Categoria:</strong> {fruit.category}</p>
-            <p><strong>Prezzo:</strong> €{fruit.price.toFixed(2)}</p>
+            <p><strong>Colore:</strong> {fruit.color}</p>
             <p><strong>Origine:</strong> {fruit.origin}</p>
             <p><strong>Calorie:</strong> {fruit.calories}</p>
-            <p className="detail-description">{fruit.description}</p>
-            <Link to="/fruits">
-                <button className="back-button">🔙 Torna alla selezione</button>
-            </Link>
+            <p><strong>Prezzo:</strong> €{fruit.price}</p>
+            <p className="fruit-description">{fruit.description}</p>
+
+            <button className="back-button" onClick={() => navigate(-1)}>
+                ← Torna indietro
+            </button>
         </div>
     );
 }
 
-export default FruitDetailPage;
+export default FruitDetail;
