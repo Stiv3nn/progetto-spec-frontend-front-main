@@ -1,60 +1,59 @@
 .fruit-card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    width: 200px;
-    text-align: center;
-    margin: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 1rem;
+  margin: 1rem;
+  width: 230px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.fruit-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
+.fruit-card img.fruit-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
-.fruit-title {
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
+.fruit-card h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
 }
 
-.fruit-link {
-    text-decoration: none;
-    color: #333;
+.fruit-card p {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0.25rem 0;
 }
 
-.fruit-link:hover {
-    color: #007bff;
+.fruit-short-desc {
+  font-style: italic;
+  color: #666;
+  font-size: 0.85rem;
 }
 
-.fruit-desc {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1rem;
+.fruit-title-link {
+  text-decoration: none;
+  color: inherit;
 }
 
-.fruit-buttons {
-    display: flex;
-    justify-content: space-between;
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
 }
 
-.compare-button,
-.favorite-button {
-    border: none;
-    padding: 0.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
+.card-buttons button {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #e1e1e1;
+  transition: background-color 0.2s;
 }
 
-.compare-button {
-    background-color: #28a745;
-    color: white;
-}
-
-.favorite-button {
-    background-color: transparent;
-    font-size: 1.2rem;
+.card-buttons button:hover {
+  background-color: #ccc;
 }
