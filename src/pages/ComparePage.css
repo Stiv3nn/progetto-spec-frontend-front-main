@@ -1,0 +1,46 @@
+.compare-page {
+    padding: 2rem;
+    text-align: center;
+}
+
+.compare-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.compare-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.compare-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: #444;
+    margin-top: 0.5rem;
+}
+
+.back-button {
+    margin-top: 2rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #eeeeee;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.back-button:hover {
+    background-color: #dddddd;
+}
