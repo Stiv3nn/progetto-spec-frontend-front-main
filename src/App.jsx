@@ -1,10 +1,10 @@
 // src/App.jsx
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-// import FruitPage from './pages/FruitPage';
-// import FavoritesPage from './pages/FavoritesPage';
-// import ComparePage from './pages/ComparePage';
-// import FruitDetail from './pages/FruitDetail';
+import FruitPage from './pages/FruitPage';
+import FavoritesPage from './pages/FavoritesPage';
+import ComparePage from './pages/ComparePage';
+import FruitDetail from './pages/FruitDetail';
 
 function App() {
   return (
