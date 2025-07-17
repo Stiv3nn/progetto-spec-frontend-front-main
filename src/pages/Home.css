@@ -1,0 +1,13 @@
+.home {
+  text-align: center;
+  padding: 100px 20px;
+}
+.start-button {
+  background-color: #6a0dad;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}
