@@ -1,0 +1,11 @@
+.fruit-page {
+    padding: 2rem;
+    text-align: center;
+}
+
+.fruit-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
