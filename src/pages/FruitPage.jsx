@@ -68,7 +68,7 @@ function FruitPage() {
     setCompareList([]);
   };
 
-  // Applica ricerca, filtri e ordinamento
+  // INSERIMENTO DELLA LOGICA PER LA RICERCA, FILTRO E ORDINAMENTO
   const filteredFruits = fruits
     .filter(f => f.title.toLowerCase().includes(searchTerm.toLowerCase()))
     .filter(f => !filterCategory || f.category === filterCategory)
@@ -77,11 +77,13 @@ function FruitPage() {
       : b.title.localeCompare(a.title)
     );
 
+
+
+
   return (
     <div className="fruit-page">
       <h1>Frutti disponibili 🍎</h1>
 
-      {/* 🔍 Filtri */}
       <div className="filters">
         <input
           type="text"
