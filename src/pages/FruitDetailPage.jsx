@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getFruits } from '../api';
-import './FruitDetail.css';
+import './FruitDetailPage.css';
 
 function FruitDetail() {
     const { id } = useParams();
