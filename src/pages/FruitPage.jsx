@@ -143,12 +143,12 @@ function FruitPage() {
           </button>
 
           {compareList.length === 2 && (
-            <>
-              {localStorage.setItem('compareList', JSON.stringify(compareList))}
-              <Link to="/compare">
-                <button className="compare-go-button">Vai al confronto →</button>
-              </Link>
-            </>
+            <Link
+              to="/compare"
+              state={{ fruit1: compareList[0], fruit2: compareList[1] }}
+            >
+              <button className="compare-go-button">Vai al confronto →</button>
+            </Link>
           )}
         </div>
       )}
