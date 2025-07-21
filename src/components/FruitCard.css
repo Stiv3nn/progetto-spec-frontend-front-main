@@ -74,3 +74,22 @@
 .fruit-card img {
   border-radius: 8px;
 }
+
+.fruit-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.fruit-card:hover {
+  transform: translateY(-4px);
+}
+
+.fruit-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}

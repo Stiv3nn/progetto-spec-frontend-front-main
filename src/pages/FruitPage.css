@@ -1,94 +1,109 @@
 .fruit-page {
-    max-width: 1200px;
+    padding: 2rem;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
-}
-
-h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
 }
 
 .filters {
     display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
 }
 
 .filter-input,
 .filter-select {
-    padding: 8px;
-    font-size: 16px;
+    padding: 0.5rem;
+    font-size: 1rem;
     border-radius: 6px;
     border: 1px solid #ccc;
 }
 
 .favorites-button {
-    margin-bottom: 20px;
-    padding: 10px 16px;
-    background-color: #8e44ad;
+    background-color: #9f7aea;
     color: white;
+    padding: 0.5rem 1rem;
     border: none;
     border-radius: 6px;
-    font-weight: bold;
     cursor: pointer;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.favorites-button:hover {
+    background-color: #805ad5;
 }
 
 .compare-container {
-    border-top: 2px dashed #ccc;
-    margin-top: 20px;
-    padding-top: 20px;
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.compare-container h2 {
+    font-size: 1.3rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
 }
 
 .compare-list {
     display: flex;
-    gap: 20px;
+    gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 10px;
 }
 
 .compare-card {
-    flex: 1;
-    min-width: 240px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    background-color: #fff;
+    background-color: white;
+    border: 1px solid #cbd5e0;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     text-align: center;
 }
 
 .compare-image {
     width: 100%;
-    max-height: 160px;
+    height: 130px;
     object-fit: cover;
     border-radius: 6px;
-    margin-bottom: 10px;
-}
-
-.reset-button,
-.compare-go-button {
-    padding: 10px 14px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
 }
 
 .reset-button {
-    background-color: #e74c3c;
+    background-color: #e53e3e;
     color: white;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 6px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.reset-button:hover {
+    background-color: #c53030;
 }
 
 .compare-go-button {
-    background-color: #2ecc71;
+    background-color: #38a169;
     color: white;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 6px;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.compare-go-button:hover {
+    background-color: #2f855a;
 }
 
 .fruit-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
 }
