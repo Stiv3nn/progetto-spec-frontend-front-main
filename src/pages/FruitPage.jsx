@@ -81,89 +81,92 @@ function FruitPage() {
 
 
   return (
-    <div className="fruit-page">
-      <h1>Frutti disponibili 🍎</h1>
+    <div>
 
-      <div className="filters">
-        <input
-          type="text"
-          placeholder="Cerca un frutto..."
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
-          className="filter-input"
-        />
-        <select
-          value={filterCategory}
-          onChange={e => setFilterCategory(e.target.value)}
-          className="filter-select"
-        >
-          <option value="">Tutte le categorie</option>
-          <option value="Tropicale">Tropicale</option>
-          <option value="Agrumi">Agrumi</option>
-          <option value="Frutta a polpa">Frutta a polpa</option>
-          <option value="Frutta a bacca">Frutta a bacca</option>
-        </select>
-        <select
-          value={sortOrder}
-          onChange={e => setSortOrder(e.target.value)}
-          className="filter-select"
-        >
-          <option value="asc">Ordina A-Z</option>
-          <option value="desc">Ordina Z-A</option>
-        </select>
-      </div>
+      <div className="fruit-page">
+        <h1>Frutti disponibili 🍎</h1>
 
-      {/* 💜 Pulsante per preferiti */}
-      {favorites.length > 0 && (
-        <Link to="/favorites">
-          <button className="favorites-button">
-            Vai alla pagina dei preferiti 💜
-          </button>
-        </Link>
-      )}
-
-      {/* ⚖️ Confronto */}
-      {compareList.length > 0 && (
-        <div className="compare-container">
-          <h2>Confronto</h2>
-          <div className="compare-list">
-            {compareList.map(fruit => (
-              <div key={fruit.id} className="compare-card">
-                <img src={fruit.image} alt={fruit.title} className="compare-image" />
-                <h3>{fruit.title}</h3>
-                <p><strong>Categoria:</strong> {fruit.category}</p>
-                <p><strong>Colore:</strong> {fruit.color}</p>
-                <p><strong>Calorie:</strong> {fruit.calories}</p>
-                <p><strong>Origine:</strong> {fruit.origin}</p>
-              </div>
-            ))}
-          </div>
-          <button className="reset-button" onClick={handleResetCompare}>
-            Rimuovi confronto
-          </button>
-
-          {compareList.length === 2 && (
-            <Link
-              to="/compare"
-              state={{ fruit1: compareList[0], fruit2: compareList[1] }}
-            >
-              <button className="compare-go-button">Vai al confronto →</button>
-            </Link>
-          )}
-        </div>
-      )}
-
-      {/* 🧺 Lista frutti */}
-      <div className="fruit-list">
-        {filteredFruits.map(fruit => (
-          <FruitCard
-            key={fruit.id}
-            fruit={fruit}
-            onCompare={handleCompare}
-            onToggleFavorite={handleToggleFavorite}
-            isFavorite={favorites.find(f => f.id === fruit.id)}
+        <div className="filters">
+          <input
+            type="text"
+            placeholder="Cerca un frutto..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            className="filter-input"
           />
-        ))}
+          <select
+            value={filterCategory}
+            onChange={e => setFilterCategory(e.target.value)}
+            className="filter-select"
+          >
+            <option value="">Tutte le categorie</option>
+            <option value="Tropicale">Tropicale</option>
+            <option value="Agrumi">Agrumi</option>
+            <option value="Frutta a polpa">Frutta a polpa</option>
+            <option value="Frutta a bacca">Frutta a bacca</option>
+          </select>
+          <select
+            value={sortOrder}
+            onChange={e => setSortOrder(e.target.value)}
+            className="filter-select"
+          >
+            <option value="asc">Ordina A-Z</option>
+            <option value="desc">Ordina Z-A</option>
+          </select>
+        </div>
+
+        {/* 💜 Pulsante per preferiti */}
+        {favorites.length > 0 && (
+          <Link to="/favorites">
+            <button className="favorites-button">
+              Vai alla pagina dei preferiti 💜
+            </button>
+          </Link>
+        )}
+
+        {/* ⚖️ Confronto */}
+        {compareList.length > 0 && (
+          <div className="compare-container">
+            <h2>Confronto</h2>
+            <div className="compare-list">
+              {compareList.map(fruit => (
+                <div key={fruit.id} className="compare-card">
+                  <img src={fruit.image} alt={fruit.title} className="compare-image" />
+                  <h3>{fruit.title}</h3>
+                  <p><strong>Categoria:</strong> {fruit.category}</p>
+                  <p><strong>Colore:</strong> {fruit.color}</p>
+                  <p><strong>Calorie:</strong> {fruit.calories}</p>
+                  <p><strong>Origine:</strong> {fruit.origin}</p>
+                </div>
+              ))}
+            </div>
+            <button className="reset-button" onClick={handleResetCompare}>
+              Rimuovi confronto
+            </button>
+
+            {compareList.length === 2 && (
+              <Link
+                to="/compare"
+                state={{ fruit1: compareList[0], fruit2: compareList[1] }}
+              >
+                <button className="compare-go-button">Vai al confronto →</button>
+              </Link>
+            )}
+          </div>
+        )}
+
+        {/* 🧺 Lista frutti */}
+        <div className="fruit-list">
+          {filteredFruits.map(fruit => (
+            <FruitCard
+              key={fruit.id}
+              fruit={fruit}
+              onCompare={handleCompare}
+              onToggleFavorite={handleToggleFavorite}
+              isFavorite={favorites.find(f => f.id === fruit.id)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

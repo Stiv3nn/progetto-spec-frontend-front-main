@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-// import './Home.css';
+import './Home.css';
 
 function Home() {
   return (
-    <div className="home">
-      <h1>Benvenuto nel Comparatore di Frutta 🍓</h1>
-      <Link to="/fruits">
-        <button className="start-button">Inizia</button>
+    <div className="home-container">
+      <h1 className="home-title">Benvenuto nel Comparatore di Frutta! 🍇🍎🍌</h1>
+      <Link to="/fruits" className="home-button">
+        Vai alla lista dei frutti →
       </Link>
     </div>
   );

@@ -59,3 +59,18 @@
 .favorite-button {
   color: #6a1b9a;
 }
+
+.fruit-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.3rem 0;
+}
+
+.fruit-card h2 {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.fruit-card img {
+  border-radius: 8px;
+}
